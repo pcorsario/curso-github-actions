@@ -1,0 +1,31 @@
+name: Multi-Trigger Workflow
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+  schedule:
+    - cron: '0 0 * * *' 
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Print message for push
+      if: github.event_name == 'push'
+      run: echo "Se ha realizado un push al repositorio por Patricio Vaca Escobar"
+
+    - name: Print message for pull request
+      if: github.event_name == 'pull_request'
+      run: echo "Patricio ha creado o actualizado un pull request"
+
+    - name: Print message for scheduled run
+      if: github.event_name == 'schedule'
+      run: echo "Patricio esta ejecutando tarea programada diaria"

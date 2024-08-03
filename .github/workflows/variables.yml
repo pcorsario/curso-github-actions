@@ -1,0 +1,25 @@
+name: Creando un workflow con condicionales
+run-name: ¡Instituto Superior Universitario Japon!
+on:
+  workflow_dispatch
+env:
+  TECNOLOGIA: GithubActions
+  ESTRELLAS: 5
+jobs:
+  saludo-variables:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Configurar variable de usuario
+        run: echo "USUARIO=Patricio" >> $GITHUB_ENV
+
+      - name: Saludar
+        run: echo "$WELCOME, $USUARIO. Estoy aprendiendo $TECNOLOGIA!"
+        env:
+          WELCOME: Bienvenido
+          USUARIO: ${{ env.USUARIO }}
+
+      - name: Verificar estrellas y ejecutar acción
+        if: ${{ env.ESTRELLAS == '5' }}
+        run: echo "¡Felicidades $USUARIO! Tienes 5 estrellas."
+        env:
+          USUARIO: ${{ env.USUARIO }}

@@ -132,7 +132,7 @@ jobs:
   TBD-step-2-notes.
 -->
 
-<details id=2 open>
+<details id=2>
 <summary><h2>Paso 2: Conoce los principales Triggers</h2></summary>
 
 _¡Creaste tu primer Workflow! :tada:_
@@ -228,7 +228,7 @@ Define terms and link to docs.github.com.
 TBD-step-3-notes.
 -->
 
-<details id=3>
+<details id=3 open>
 <summary><h2>Paso 3: Aprende a usar Expresiones</h2></summary>
 
 _¡Buen trabajo usando los distintos eventos para lanzar nuevos workflows! :sparkles:_

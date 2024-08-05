@@ -1,0 +1,28 @@
+name: Workflow file expresiones
+
+on:
+  push:
+    branches:
+      - dependabot/github_actions/actions/checkout-4
+  workflow_dispatch:
+  schedule:
+    - cron: '0 0 * * 0' 
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out the code
+        uses: actions/checkout@v2
+        
+      - name: Run tests
+        run: |
+          echo "Running tests..."
+          
+      - name: Notify
+        if: success()
+        run: echo "Las pruebas se ejecutaron correctamente."
+
+      - name: Notify on failure
+        if: failure()
+        run: echo "Las pruebas fallaron. Revisa los logs."
